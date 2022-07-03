@@ -2,10 +2,10 @@ import "./App.css";
 import Quora from "./components/Quora";
 
 // for new path setting
-import { BrowserRouter as Router, Routes, Route}
-    from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route }
+  from 'react-router-dom';
 
-    import Login from "./components/Login"
+import Register from "./components/Register"
 
 function App() {
   return (
@@ -15,14 +15,11 @@ function App() {
     // </div>
 
     <Router>
-    
-    <Routes>
-        <Route exact path='/'  element={<Quora />} />
-        {/* <Route path='/about' element={<About/>} />
-        <Route path='/contact' element={<Contact/>} />
-        <Route path='/blogs' element={<Blogs/>} /> */}
-        <Route path='/login' element={<Login />} />
-    </Routes>
+
+      <Routes>
+        <Route exact path='/' element={<Quora />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
     </Router>
   );
 }

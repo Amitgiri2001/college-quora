@@ -15,7 +15,7 @@ import "./css/QuoraHeader.css";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import axios from "axios";
-import Login from "./Login";
+
 
 function QuoraHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -83,7 +83,7 @@ function QuoraHeader() {
         <div className="qHeader__Rem">
           <Avatar />
           <Button onClick={() => setIsModalOpen(true)}>Add Question</Button>
-          <a class="btn btn-dark btn-lg" href="/login" role="button">Login </a>
+          <a class="btn btn-dark btn-lg" href="/register" role="button">Register </a>
           <Modal
             open={isModalOpen}
             closeIcon={Close}
