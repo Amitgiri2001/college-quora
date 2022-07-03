@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const loginDB = require("../models/Login");
+const registerDB = require("../models/Register");
 
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    await loginDB
+    await registerDB
       .create({
         userName: req.body.userName,
         password: req.body.password,

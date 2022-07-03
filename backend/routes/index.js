@@ -3,7 +3,7 @@ const router = express.Router();
 
 const questionRouter = require("./Question");
 const answerRouter = require("./Answer");
-const loginRouter=require("./Login")
+const registerRouter=require("./Register")
 
 router.get("/", (req, res) => {
   res.send("This api is reserved for quora clone");
@@ -11,6 +11,6 @@ router.get("/", (req, res) => {
 
 router.use("/questions", questionRouter);
 router.use("/answers", answerRouter);
-router.use("/login", loginRouter);
+router.use("/register", registerRouter);
 
 module.exports = router;
