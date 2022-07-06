@@ -44,7 +44,7 @@ function Register() {
 
   const Shown = () => {
 
-    if (pwShown == 0) {
+    if (pwShown === 0) {
       pwShown = 1;
       show();
     } else {
@@ -54,14 +54,11 @@ function Register() {
 
   }
 
-  function setUser(val){
-    setUserName(val);
-  }
 
 
   return (
     <div class="overlay">
-<QuoraHeader />
+      <QuoraHeader />
       <form method='post' action='/register'>
 
         <div class="con">
@@ -100,13 +97,13 @@ function Register() {
 
             <br />
 
-            <button class="log-in buttons" onClick={handleSubmit}> Log In </button>
+            <button class="log-in buttons" type='submit' onClick={handleSubmit}> Register </button>
           </div>
 
 
           <div class="other">
 
-            <button class="btn submits buttons sign-up">Sign Up
+            <button class="btn submits buttons sign-up" >Sign Up
 
               <i class="fa fa-user-plus" aria-hidden="true"></i>
             </button>

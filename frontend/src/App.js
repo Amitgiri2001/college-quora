@@ -13,9 +13,9 @@ function App() {
     //   {/* <h1>This is for testing</h1> */}
     //   <Quora />
     // </div>
-
+    
+    //Route setting
     <Router>
-
       <Routes>
         <Route exact path='/' element={<Quora />} />
         <Route path='/register' element={<Register />} />
