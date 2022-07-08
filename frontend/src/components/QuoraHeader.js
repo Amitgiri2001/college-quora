@@ -15,9 +15,7 @@ import "./css/QuoraHeader.css";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import axios from "axios";
-// register button
-import Register from "./Register";
-import Login from "./Login";
+
 
 function QuoraHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -160,8 +158,7 @@ function QuoraHeader() {
             </div>
           </Modal>
 
-          <Register />
-          <Login />
+          
 
         </div>
       </div>

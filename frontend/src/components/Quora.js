@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 import Widget from "./Widget";
 import "./css/Quora.css";
 
-function Quora() {
+function Quora({setLoginUser}) {
   return (
     <div className="quora">
       <QuoraHeader />

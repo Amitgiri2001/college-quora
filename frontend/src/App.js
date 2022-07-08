@@ -2,25 +2,31 @@ import "./App.css";
 import Quora from "./components/Quora";
 
 // for new path setting
+
+import Login from "./components/login/login"
+import Register from "./components/register/register"
 import { BrowserRouter as Router, Routes, Route }
   from 'react-router-dom';
-
-import Register from "./components/Register"
+import { useState } from "react";
 
 function App() {
+
+  const [ user, setLoginUser] = useState({})
   return (
-    // <div className="App">
-    //   {/* <h1>This is for testing</h1> */}
-    //   <Quora />
-    // </div>
-    
-    //Route setting
-    <Router>
-      <Routes>
-        <Route exact path='/' element={<Quora />} />
-        <Route path='/register' element={<Register />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route exact path="/" element={user && user._id ? <Quora setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>} />
+            
+          <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
+            
+          
+          <Route path="/register" element={<Register />} />
+            
+          
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
