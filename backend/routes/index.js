@@ -11,6 +11,6 @@ router.get("/", (req, res) => {
 
 router.use("/questions", questionRouter);
 router.use("/answers", answerRouter);
-router.use("/register", registerRouter);
+router.use("/registers", registerRouter);
 
 module.exports = router;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-// import "./css/Register2.css"
+import React, { useEffect, useState } from 'react'
+// import "./css/Login2.css"
 import axios from 'axios';
 
 import CloseIcon from "@material-ui/icons/Close";
@@ -9,28 +9,39 @@ const Close = <CloseIcon />;
 
 
 
-function Register() {
-  const [isRegModalOpen, setIsRegModalOpen] = useState(false);
+function Login() {
+  const [isLogModalOpen, setIsLogModalOpen] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegSubmit = async () => {
-    if (userName !== "" && password !== "") {
-      const config = {
-        "Content-Type": "application/json"
-      }
-      const body = {
-        userName: userName,
-        password: password,
-      }
-      await axios.post("/api/registers", body, config).then((res) => {
-        console.log(res.data);
-        alert("Register Successfully.");
-        window.location.href = "/"
-      }).catch((e) => {
-        console.log(e);
-      });
-    }
+
+//   create an array of user name and password
+const [users,setUsers]=useState([]);
+  useEffect(() => {
+    axios.get("/api/registers").then((res) => {
+      console.log(res)
+      setUsers(res.data);
+
+    }).catch((e) => {
+      console.log(e);;
+    });
+
+
+  }, [])
+ 
+
+  const handleLogSubmit = async () => {
+    console.log(userName);
+    console.log(password);
+    
+    // const findResult = await registers.find({
+    //     userName:userName,
+    //     password:password ,
+    //   });
+    //   console.log(findResult)
+
+    
+    
   }
 
   // hide and show password---
@@ -67,16 +78,13 @@ function Register() {
   return (
     <div class="overlay">
 
-      {/* Create register model */}
+      {/* Create Login model */}
 
-
-      {/* <a class="btn btn-dark btn-lg" href="/register" role="button">Register </a> */}
-
-      <Button onClick={() => setIsRegModalOpen(true)} style={{backgroundColor:"black", color:"white",marginLeft:"20px"}} >Register</Button>
+      <Button onClick={() => setIsLogModalOpen(true)} style={{backgroundColor:"black", color:"white",marginLeft:"20px"}} >Login</Button>
       <Modal
-        open={isRegModalOpen}
+        open={isLogModalOpen}
         closeIcon={Close}
-        onClose={() => setIsRegModalOpen(false)}
+        onClose={() => setIsLogModalOpen(false)}
         closeOnEsc
         center
         closeOnOverlayClick={false}
@@ -97,17 +105,11 @@ function Register() {
             }}
           >
             <div class="con">
-
               <header class="head-form">
-                <h2>Sign Up</h2>
-
-                {/* <p>login here using your username and password</p> */}
+                <h2>Log In</h2>
               </header>
-
               <br />
               <div class="field-set">
-
-
                 <span class="input-item">
                   <i class="fa fa-user-circle"></i>
                 </span>
@@ -128,11 +130,11 @@ function Register() {
           </div>
         </div>
         <div className="modal__buttons">
-          <button className="cancle" onClick={() => setIsRegModalOpen(false)}>
+          <button className="cancle" onClick={() => setIsLogModalOpen(false)}>
             Cancel
           </button>
-          <button type="submit" onClick={handleRegSubmit} className="add">
-            Register
+          <button type="submit" onClick={handleLogSubmit} className="add">
+            Login
           </button>
         </div>
       </Modal>
@@ -140,4 +142,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Login
