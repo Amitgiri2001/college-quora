@@ -18,7 +18,7 @@
   /* padding: 5px; */
 }
 
-.qHeader__logo > img {
+.qHeader__logo  img {
   height: 30px !important;
   object-fit: contain;
 }
@@ -36,7 +36,7 @@
   background-color: #eee;
   border-radius: 5px;
 }
-
+/* for make bigger all icon */
 .qHeader__icon > .MuiSvgIcon-root {
   color: gray;
   font-size: xx-large;
@@ -116,7 +116,7 @@
 }
 
 .react-responsive-modal-overlay {
-  background: rgb(0 0 0 / 75%);
+  background: rgb(0 0 0 / 55%);
 }
 
 

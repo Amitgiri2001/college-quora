@@ -38,7 +38,7 @@ function QuoraHeader() {
       await axios
         .post("/api/questions", body, config)
         .then((res) => {
-          // console.log(res.data);
+          console.log(res.data);
           alert(res.data.message);
           window.location.href="/"
           
@@ -83,7 +83,7 @@ function QuoraHeader() {
         <div className="qHeader__Rem">
           <Avatar />
           <Button onClick={() => setIsModalOpen(true)}>Add Question</Button>
-          <a class="btn btn-dark btn-lg" href="/register" role="button">Register </a>
+          {/* modal for Add question button */}
           <Modal
             open={isModalOpen}
             closeIcon={Close}
@@ -155,6 +155,8 @@ function QuoraHeader() {
               </button>
             </div>
           </Modal>
+          <a class="btn btn-dark btn-lg" href="/register" role="button">Register </a>
+          
         </div>
       </div>
     </div>
