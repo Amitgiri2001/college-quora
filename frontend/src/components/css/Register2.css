@@ -1,0 +1,154 @@
+
+/* model style ----------------------------*/
+.react-responsive-modal-modal {
+    width: 90vw;
+    height: 90vh;
+  }
+  
+  .quill {
+    height: 50vh;
+  }
+  
+  .react-responsive-modal-overlay {
+    background: rgb(0 0 0 / 55%);
+  }
+  
+  
+  .modal__buttons {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 10px;
+    align-items: center;
+  }
+  
+  .modal__buttons > .cancle {
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    color: gray;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 33px;
+    cursor: pointer;
+  }
+  
+  .modal__buttons > .cancle:hover {
+    color: red;
+  }
+  
+  .modal__buttons > .add {
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    background-color: #222;
+    color: white;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 33px;
+    cursor: pointer;
+    width: 50%;
+  }
+  
+  .modal__buttons > .add:hover {
+    background-color: #eee;
+    color: #222;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .qHeader__icons {
+      display: none;
+    }
+  
+    .qHeader__input {
+      display: none;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+  /* the header form form */
+header {
+    margin: 2% auto 10% auto;
+    text-align: center;
+}
+/* Login title form form */
+header h2 {
+    font-size: 250%;
+    font-family: 'Playfair Display', serif;
+    color: #3e403f;
+}
+/*  A welcome message or an explanation of the login form */
+header p {letter-spacing: 0.05em;}
+
+
+
+/* //////////////////////////////////////////// */
+/* //////////////////////////////////////////// */
+
+
+.input-item {
+    background: #fff;
+    color: #333;
+    padding: 14.5px 0px 15px 9px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+
+
+/* Show/hide password Font Icon */
+#eye {
+    background: #fff;
+    color: #333;
+  
+    margin: 5.9px 0 0 0;
+    margin-left: -20px;
+    padding: 15px 9px 19px 0px;
+    border-radius: 0px 5px 5px 0px;
+  
+    float: right;
+    position: relative;
+    right: 1%;
+    top: -.2%;
+    z-index: 5;
+    
+    cursor: pointer;
+}
+/* inputs form  */
+input[class="form-input"]{
+    width: 240px;
+    height: 50px;
+  
+    margin-top: 2%;
+    padding: 15px;
+    
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #5E6472;
+  
+    outline: none;
+    border: none;
+  
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.2s linear;
+    
+}
+input[id="txt-input"] {width: 250px;}
+/* focus  */
+input:focus {
+    transform: translateX(-2px);
+    border-radius: 5px;
+}
+
+
+
+
+/*     Sign Up button  */
+.sign-up {background: #B8F2E6;}
+
+

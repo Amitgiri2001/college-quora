@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
-import "./css/Register.css"
+// import "./css/Register2.css"
 import axios from 'axios';
-import QuoraHeader from './QuoraHeader';
+
+import CloseIcon from "@material-ui/icons/Close";
+import { Button } from "@material-ui/core";
+import { Modal } from "react-responsive-modal";
+const Close = <CloseIcon />;
+
+
+
 function Register() {
+  const [isRegModalOpen, setIsRegModalOpen] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async () => {
+  const handleRegSubmit = async () => {
     if (userName !== "" && password !== "") {
       const config = {
         "Content-Type": "application/json"
@@ -58,62 +66,76 @@ function Register() {
 
   return (
     <div class="overlay">
-      <QuoraHeader />
-      <form method='post' action='/register'>
 
-        <div class="con">
-
-          <header class="head-form">
-            <h2>Sign Up</h2>
-
-            {/* <p>login here using your username and password</p> */}
-          </header>
-
-          <br />
-          <div class="field-set">
+      {/* Create register model */}
 
 
-            <span class="input-item">
-              <i class="fa fa-user-circle"></i>
-            </span>
+      {/* <a class="btn btn-dark btn-lg" href="/register" role="button">Register </a> */}
 
-            <input class="form-input" id="txt-input" type="text" placeholder="@UserName" name='userName' value={userName} onChange={(e) => setUserName(e.target.value)} required />
+      <Button onClick={() => setIsRegModalOpen(true)} style={{backgroundColor:"black", color:"white",marginLeft:"20px"}} >Register</Button>
+      <Modal
+        open={isRegModalOpen}
+        closeIcon={Close}
+        onClose={() => setIsRegModalOpen(false)}
+        closeOnEsc
+        center
+        closeOnOverlayClick={false}
+        styles={{
+          overlay: {
+            height: "auto",
+          },
+        }}
+      >
+        
 
-            <br />
+        <div className="modal__Field">
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div class="con">
+
+              <header class="head-form">
+                <h2>Sign Up</h2>
+
+                {/* <p>login here using your username and password</p> */}
+              </header>
+
+              <br />
+              <div class="field-set">
 
 
+                <span class="input-item">
+                  <i class="fa fa-user-circle"></i>
+                </span>
 
-            <span class="input-item">
-              <i class="fa fa-key"></i>
-            </span>
-
-            <input class="form-input" type="password" placeholder="Password" id="pwd" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-
-
-            <span>
-              <i class="fa fa-eye" aria-hidden="true" type="button" id="eye" onClick={Shown}></i>
-            </span>
+                <input class="form-input" id="txt-input" type="text" placeholder="@UserName" name='userName' value={userName} onChange={(e) => setUserName(e.target.value)} required />
+                <br />
+                <span class="input-item">
+                  <i class="fa fa-key"></i>
+                </span>
+                <input class="form-input" type="password" placeholder="Password" id="pwd" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
 
 
-            <br />
-
-            <button class="log-in buttons" type='submit' onClick={handleSubmit}> Register </button>
+                <span>
+                  <i class="fa fa-eye" aria-hidden="true" type="button" id="eye" onClick={Shown}></i>
+                </span>
+              </div>
+            </div>
           </div>
-
-
-          <div class="other">
-
-            <button class="btn submits buttons sign-up" >Sign Up
-
-              <i class="fa fa-user-plus" aria-hidden="true"></i>
-            </button>
-
-          </div>
-
-
         </div>
-
-      </form>
+        <div className="modal__buttons">
+          <button className="cancle" onClick={() => setIsRegModalOpen(false)}>
+            Cancel
+          </button>
+          <button type="submit" onClick={handleRegSubmit} className="add">
+            Register
+          </button>
+        </div>
+      </Modal>
     </div>
   )
 }

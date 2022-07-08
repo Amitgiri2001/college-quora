@@ -15,10 +15,13 @@ import "./css/QuoraHeader.css";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import axios from "axios";
+// register button
+import Register from "./Register";
 
 
 function QuoraHeader() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const [inputUrl, setInputUrl] = useState("");
   const [question, setQuestion] = useState("");
   const Close = <CloseIcon />;
@@ -33,15 +36,15 @@ function QuoraHeader() {
       const body = {
         questionName: question,
         questionUrl: inputUrl,
-        
+
       };
       await axios
         .post("/api/questions", body, config)
         .then((res) => {
           console.log(res.data);
           alert(res.data.message);
-          window.location.href="/"
-          
+          window.location.href = "/"
+
         })
         .catch((e) => {
           console.log(e);
@@ -50,6 +53,7 @@ function QuoraHeader() {
     }
   };
 
+  
   return (
     <div className="qHeader">
       <div className="qHeader-content">
@@ -111,7 +115,7 @@ function QuoraHeader() {
             </div>
             <div className="modal__Field">
               <Input
-              value={question}
+                value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 type=" text"
                 placeholder="Start your question with 'What', 'How', 'Why', etc. "
@@ -155,8 +159,10 @@ function QuoraHeader() {
               </button>
             </div>
           </Modal>
-          <a class="btn btn-dark btn-lg" href="/register" role="button">Register </a>
+
+          <Register />
           
+
         </div>
       </div>
     </div>
