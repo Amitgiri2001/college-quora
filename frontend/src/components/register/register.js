@@ -4,12 +4,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Option from "./Option";
 // add all college
-import college from "../College";
-console.log(college[0].college);
+import Cname from "../College";
+// console.log(college[0].college);
 
 const Register = () => {
   const history = useNavigate();
-  let value1 ="";
+  let value1 = "";
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -50,24 +50,11 @@ const Register = () => {
       ></input>
       {/* ---------select college-------------- */}
       <label htmlFor="">College name:</label>
-      <select
-        name="Select your college"
-        id="selecter"
-        style={{ width: "200px", height: "25px" }}
-        onClick={function createOption() {
-          let yOption = "";
-          
-          college.forEach((Cname) => {
-            
-            yOption += "<option value='"+Cname.college+"'>"+Cname.college+"</option>";
-            value1=Cname.college;
-          });
-
-          document.getElementById("selecter").innerHTML = yOption;
-        }}
-        placeholder={value1}
-      >
-       
+      <select>
+        {Array.isArray(Cname) &&
+          Cname.forEach(function (name) {
+            <option value={name.college}>{name.college}</option>;
+          })}
       </select>
       <input
         type="text"
