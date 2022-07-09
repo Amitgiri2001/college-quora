@@ -30,18 +30,35 @@ function LastSeen({ date }) {
 }
 
 
-function Post({ post, name }) {
+function Post({ post, User }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const Close = <CloseIcon />;
   const [answer, setAnswer] = useState("");
-  console.log("User is: ")
-  console.log(name);
+  const [uVote, setUVote] = useState(0);
+  const { college_name, name } = User;
+  // console.log("User is: ")
+  // console.log(name);
   const handleQuill = (value) => {
     setAnswer(value);
   }
+  const increaseVote= async()=> {
+    setUVote(uVote+1);
+    console.log(uVote);
+    const config = {
+        "Content-Type": "application/json"
+      }
+      
+      await axios.patch("/api/questions", {uVote:uVote}, config).then((res) => {
+        // console.log(res.data.reverse());
+        alert("Upvoted Successfully.");
+        // window.location.href = "/"
+      }).catch((e) => {
+        console.log(e);
+      });
+  }
 
   const handleSubmit = async () => {
-    if (post?._id && answer !== "") {
+    if (post?._id && answer !== "" && college_name === "Uit") {
       const config = {
         "Content-Type": "application/json"
       }
@@ -57,6 +74,9 @@ function Post({ post, name }) {
       }).catch((e) => {
         console.log(e);
       });
+    }
+    else {
+      alert("We Don't have the permission for add any answer .")
     }
   }
   return (
@@ -111,9 +131,12 @@ function Post({ post, name }) {
         {post.questionUrl !== "" && <img src={post.questionUrl} alt="post" />}
       </div>
       <div className="post__footer">
-        <div className="post__footerAction">
-          <ArrowUpwardOutlined />
+        <div className="post__footerAction" >
+          <ArrowUpwardOutlined onClick={increaseVote
+        }/>
+          <p className="total-vote" >{post?.uVote}</p>
           <ArrowDownwardOutlined />
+          <p className="total-vote">4</p>
         </div>
         <RepeatOneOutlined />
         <ChatBubbleOutlined />

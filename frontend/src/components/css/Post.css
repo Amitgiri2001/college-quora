@@ -97,7 +97,8 @@
 
 .post__footerAction {
   background-color: lightgray;
-  padding: 5px;
+  padding: 5px 20px;
+  
   align-items: center;
   display: flex;
   justify-content: space-around;
@@ -105,13 +106,16 @@
 }
 .post__footerAction > .MuiSvgIcon-root {
   color: gray;
-  margin-right: 40px;
+  margin-right: 2px;
   cursor: pointer;
+}
+.total-vote{
+  margin-right: 10px;
 }
 
 .post__footerAction > .MuiSvgIcon-root:hover {
   color: rgb(0, 140, 255);
-  margin-right: 40px;
+  /* margin-right: 40px; */
 }
 
 .post__footerLeft {

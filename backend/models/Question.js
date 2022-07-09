@@ -4,6 +4,7 @@ const QuestionSchema = new mongoose.Schema({
   questionName: String,
   questionUrl: String,
   name:String,
+  uVote:Number,
   createdAt: {
     type: Date,
     default: Date.now(),

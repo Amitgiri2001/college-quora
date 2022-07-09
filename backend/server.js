@@ -23,7 +23,8 @@ db.connect();
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
-  password: String
+  password: String,
+  college_name:String
 })
 
 const User = new mongoose.model("User", userSchema)
@@ -45,7 +46,7 @@ app.post("/login", (req, res)=> {
 }) 
 
 app.post("/register", (req, res)=> {
-  const { name, email, password} = req.body
+  const { name, email, password,college_name} = req.body
   User.findOne({email: email}, (err, user) => {
       if(user){
           res.send({message: "User already registerd"})
@@ -53,7 +54,8 @@ app.post("/register", (req, res)=> {
           const user = new User({
               name,
               email,
-              password
+              password,
+              college_name
           })
           user.save(err => {
               if(err) {

@@ -22,10 +22,10 @@ function Feed({User}) {
 
   return (
     <div className="feed">
-      <QuoraBox name={name} />
+      <QuoraBox User={User} />
       {
         posts.map((post,index)=>(
-          <Post key={index} post={post} name={name} />
+          <Post key={index} post={post} User={User} />
         ))
       }
       {/* <Post />

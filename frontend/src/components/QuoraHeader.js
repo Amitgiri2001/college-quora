@@ -19,7 +19,7 @@ import axios from "axios";
 
 const QuoraHeader = ({ User }) => {
   // console.log(User.User.name);
-  const { name, email } = User;
+  const { name, email,college_name } = User;
   // console.log(name);
   // console.log(email);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +29,7 @@ const QuoraHeader = ({ User }) => {
   const Close = <CloseIcon />;
 
   const handleSubmit = async () => {
-    if (question !== "" && User.name !== "") {
+    if (question !== "" && college_name === "Uit") {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -39,6 +39,7 @@ const QuoraHeader = ({ User }) => {
         questionName: question,
         questionUrl: inputUrl,
         name:name,
+        uVote:0,
 
       };
       await axios

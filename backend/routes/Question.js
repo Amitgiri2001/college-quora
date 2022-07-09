@@ -12,6 +12,7 @@ router.post("/", async (req, res) => {
         questionName: req.body.questionName,
         questionUrl: req.body.questionUrl,
         name:req.body.name,
+        uVote:req.body.uVote,
       })
       .then(() => {
         res.status(201).send({

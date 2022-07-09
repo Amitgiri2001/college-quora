@@ -9,12 +9,13 @@ import Cname from "../College";
 
 const Register = () => {
   const history = useNavigate();
-  let value1 = "";
+ 
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
     reEnterPassword: "",
+    college_name:"Choose",
   });
 
   const handleChange = (e) => {
@@ -26,8 +27,8 @@ const Register = () => {
   };
 
   const register = () => {
-    const { name, email, password, reEnterPassword } = user;
-    if (name && email && password && password === reEnterPassword) {
+    const { name, email, password, reEnterPassword,college_name } = user;
+    if (name && email && password && password === reEnterPassword && college_name ) {
       axios.post("/register", user).then((res) => {
         alert(res.data.message);
         history("/login");
@@ -50,11 +51,16 @@ const Register = () => {
       ></input>
       {/* ---------select college-------------- */}
       <label htmlFor="">College name:</label>
-      <select>
-        {Array.isArray(Cname) &&
-          Cname.forEach(function (name) {
-            <option value={name.college}>{name.college}</option>;
-          })}
+      <select style={{width:"200px"}} name="college_name" onChange={handleChange}>
+        {/* {Array.isArray(Cname) &&
+          Cname.forEach((name,index,array) => {
+            console.log(name);
+            <option value={index}>{index}</option>;
+          })} */}
+          <option value="Uit">Choose college</option>
+          <option value="Nit">kolkata </option>
+          <option value="mit">bangalore</option>
+          <option value="Uit">Uit college</option>
       </select>
       <input
         type="text"
@@ -81,7 +87,7 @@ const Register = () => {
         Register
       </div>
       <div>or</div>
-      <div className="button" onClick={() => history.push("/login")}>
+      <div className="button" onClick={() => history("/login")}>
         Login
       </div>
     </div>
