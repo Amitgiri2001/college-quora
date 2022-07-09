@@ -30,11 +30,12 @@ function LastSeen({ date }) {
 }
 
 
-function Post({ post }) {
+function Post({ post, name }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const Close = <CloseIcon />;
   const [answer, setAnswer] = useState("");
-
+  console.log("User is: ")
+  console.log(name);
   const handleQuill = (value) => {
     setAnswer(value);
   }
@@ -47,9 +48,10 @@ function Post({ post }) {
       const body = {
         answer: answer,
         questionId: post?._id,
+        name: name,
       }
       await axios.post("/api/answers", body, config).then((res) => {
-        console.log(res.data);
+        // console.log(res.data.reverse());
         alert("Answer Added Successfully.");
         window.location.href = "/"
       }).catch((e) => {
@@ -61,7 +63,7 @@ function Post({ post }) {
     <div className="post">
       <div className="post__info">
         <Avatar />
-        <h4>User Name</h4>
+        <h4>{post?.name}</h4>
         <small><LastSeen date={post?.createdAt} /></small>
       </div>
       <div className="post__body">
@@ -89,7 +91,7 @@ function Post({ post }) {
             <div className="modal__question">
               <h1>{post?.questionName}</h1>
               <p>
-                asked by <span className="name">Username</span> on{" "}
+                asked by <span className="name">{post?.name}</span> on{" "}
                 <span className="name">{new Date(post?.createdAt).toLocaleString()}</span>
               </p>
             </div>
@@ -168,7 +170,7 @@ function Post({ post }) {
                   }}
                   className="post-info"
                 >
-                  <p>UserName</p>
+                  <p>{_a?.name}</p>
                   <span>
                     <LastSeen date={_a?.createdAt} />
                   </span>

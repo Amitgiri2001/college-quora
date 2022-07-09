@@ -4,7 +4,9 @@ import "./css/Feed.css";
 import Post from "./Post";
 import axios from "axios";
 
-function Feed() {
+function Feed({User}) {
+  const name=User.name;
+  // console.log(name)
   const [posts,setPosts]=useState([]);
   useEffect(() => {
     axios.get("/api/questions").then((res) => {
@@ -20,10 +22,10 @@ function Feed() {
 
   return (
     <div className="feed">
-      <QuoraBox />
+      <QuoraBox name={name} />
       {
         posts.map((post,index)=>(
-          <Post key={index} post={post} />
+          <Post key={index} post={post} name={name} />
         ))
       }
       {/* <Post />

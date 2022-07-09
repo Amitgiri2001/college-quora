@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/" element={user && user._id ? <Quora setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>} />
+          <Route exact path="/" element={user && user._id ? <Quora User={user} /> : <Login setLoginUser={setLoginUser}/>} />
             
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
             

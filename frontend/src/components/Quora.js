@@ -5,14 +5,15 @@ import Sidebar from "./Sidebar";
 import Widget from "./Widget";
 import "./css/Quora.css";
 
-function Quora({setLoginUser}) {
+function Quora({User}) {
+  // console.log(User);
   return (
     <div className="quora">
-      <QuoraHeader />
+      <QuoraHeader User={User} />
       <div className="quora__contents">
         <div className="quora__content">
           <Sidebar />
-          <Feed />
+          <Feed User={User}/>
           <Widget />
         </div>
       </div>

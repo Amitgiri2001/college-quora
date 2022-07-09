@@ -17,15 +17,19 @@ import "react-responsive-modal/styles.css";
 import axios from "axios";
 
 
-function QuoraHeader() {
+const QuoraHeader = ({ User }) => {
+  // console.log(User.User.name);
+  const { name, email } = User;
+  // console.log(name);
+  // console.log(email);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   const [inputUrl, setInputUrl] = useState("");
   const [question, setQuestion] = useState("");
   const Close = <CloseIcon />;
 
   const handleSubmit = async () => {
-    if (question !== "") {
+    if (question !== "" && User.name !== "") {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -34,6 +38,7 @@ function QuoraHeader() {
       const body = {
         questionName: question,
         questionUrl: inputUrl,
+        name:name,
 
       };
       await axios
@@ -49,9 +54,18 @@ function QuoraHeader() {
           alert("Error in adding question");
         });
     }
+    else{
+      alert("We Don't have the permission for add Question.")
+    }
   };
+  function logout() {
+    console.log(User);
+    User = {};
+    console.log(User);
+    window.location.href = "/";
+  }
 
-  
+
   return (
     <div className="qHeader">
       <div className="qHeader-content">
@@ -73,6 +87,7 @@ function QuoraHeader() {
           </div>
           <div className="qHeader__icon">
             <PeopleAltOutlined />
+
           </div>
           <div className="qHeader__icon">
             <NotificationsOutlined />
@@ -84,6 +99,7 @@ function QuoraHeader() {
         </div>
         <div className="qHeader__Rem">
           <Avatar />
+          <p>{name}</p>
           <Button onClick={() => setIsModalOpen(true)}>Add Question</Button>
           {/* modal for Add question button */}
           <Modal
@@ -157,8 +173,9 @@ function QuoraHeader() {
               </button>
             </div>
           </Modal>
+          {/* log out button */}
+          <Button onClick={logout} >Logout</Button>
 
-          
 
         </div>
       </div>

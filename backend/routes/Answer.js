@@ -9,6 +9,7 @@ router.post("/", async (req, res) => {
       .create({
         answer: req.body.answer,
         questionId: req.body.questionId,
+        name:req.body.name,
       })
       .then(() => {
         res.status(201).send({
