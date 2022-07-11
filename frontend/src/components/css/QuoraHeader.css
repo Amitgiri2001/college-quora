@@ -38,7 +38,7 @@
 }
 /* for make bigger all icon */
 .qHeader__icon > .MuiSvgIcon-root {
-  color: gray;
+  color: rgb(245, 0, 0);
   font-size: xx-large;
   margin-left: 20px;
   margin-right: 20px;
@@ -90,7 +90,7 @@
 }
 
 .qHeader__Rem > .MuiButton-root {
-  color: white;
+  color: rgb(255, 255, 255);
   background: #222;
   text-transform: inherit;
   border-radius: 5px;
@@ -100,6 +100,11 @@
 .qHeader__Rem > .MuiButton-root:hover {
   color: #222;
   background: rgb(214, 214, 214);
+}
+/* user name */
+.uname{
+  padding: 15px;
+  padding-left: 5px;
 }
 
 

@@ -29,32 +29,41 @@ function LastSeen({ date }) {
   )
 }
 
-
+// main point of this website
+// here we get two props 
 function Post({ post, User }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const Close = <CloseIcon />;
   const [answer, setAnswer] = useState("");
   const [uVote, setUVote] = useState(0);
+  const [dec,setDec]=useState(0);
   const { college_name, name } = User;
-  // console.log("User is: ")
-  // console.log(name);
   const handleQuill = (value) => {
     setAnswer(value);
   }
-  const increaseVote= async()=> {
+  const decreaseVote=()=> {
+    setDec(dec+1);
+  }
+  const increaseVote=()=> {
     setUVote(uVote+1);
-    console.log(uVote);
-    const config = {
-        "Content-Type": "application/json"
-      }
+
+    // try to patch the upote count into out database--
+
+
+    // console.log(uVote);
+    // const config = {
+    //     "Content-Type": "application/json"
+    //   }
       
-      await axios.patch("/api/questions", {uVote:uVote}, config).then((res) => {
-        // console.log(res.data.reverse());
-        alert("Upvoted Successfully.");
-        // window.location.href = "/"
-      }).catch((e) => {
-        console.log(e);
-      });
+    //   await axios.patch("/api/questions", {uVote:uVote}, config).then((res) => {
+    //     // console.log(res.data.reverse());
+    //     alert("Upvoted Successfully.");
+    //     // window.location.href = "/"
+    //   }).catch((e) => {
+    //     console.log(e);
+    //   });
+
+
   }
 
   const handleSubmit = async () => {
@@ -134,9 +143,10 @@ function Post({ post, User }) {
         <div className="post__footerAction" >
           <ArrowUpwardOutlined onClick={increaseVote
         }/>
-          <p className="total-vote" >{post?.uVote}</p>
-          <ArrowDownwardOutlined />
-          <p className="total-vote">4</p>
+          <p className="total-vote" >{uVote}</p>
+          <ArrowDownwardOutlined onClick={decreaseVote
+        } />
+          <p className="total-vote">{dec}</p>
         </div>
         <RepeatOneOutlined />
         <ChatBubbleOutlined />

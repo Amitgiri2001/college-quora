@@ -11,6 +11,8 @@ import {
 } from "@material-ui/icons";
 import CloseIcon from "@material-ui/icons/Close";
 import { Avatar, Button, Input } from "@material-ui/core";
+// for button style
+import "./css/button.css"
 import "./css/QuoraHeader.css";
 import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
@@ -100,8 +102,10 @@ const QuoraHeader = ({ User }) => {
         </div>
         <div className="qHeader__Rem">
           <Avatar />
-          <p>{name}</p>
-          <Button onClick={() => setIsModalOpen(true)}>Add Question</Button>
+          <p className="uname">{name}</p>
+          {/* <Button onClick={() => setIsModalOpen(true)}>Add Question</Button> */}
+
+          <button class="button-78" role="button" onClick={() => setIsModalOpen(true)}>Add Question</button>
           {/* modal for Add question button */}
           <Modal
             open={isModalOpen}
@@ -175,8 +179,8 @@ const QuoraHeader = ({ User }) => {
             </div>
           </Modal>
           {/* log out button */}
-          <Button onClick={logout} >Logout</Button>
-
+          {/* <Button onClick={logout} >Logout</Button> */}
+          <button class="button-78" role="button"  onClick={logout}>Logout</button>
 
         </div>
       </div>

@@ -5,9 +5,10 @@ import Post from "./Post";
 import axios from "axios";
 
 function Feed({User}) {
-  const name=User.name;
-  // console.log(name)
+  
   const [posts,setPosts]=useState([]);
+
+  // we are use useEffect for get all posts in one array
   useEffect(() => {
     axios.get("/api/questions").then((res) => {
       console.log(res.data)
@@ -23,16 +24,13 @@ function Feed({User}) {
   return (
     <div className="feed">
       <QuoraBox User={User} />
+      {/* Put all the posts */}
       {
         posts.map((post,index)=>(
           <Post key={index} post={post} User={User} />
         ))
       }
-      {/* <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post /> */}
+      
     </div>
   );
 }
